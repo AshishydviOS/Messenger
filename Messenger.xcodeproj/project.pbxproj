@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24065D49255DBF3F008BAA1E /* Extension+UIVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24065D48255DBF3F008BAA1E /* Extension+UIVIew.swift */; };
 		2487CD46255D9C810032BF7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2487CD45255D9C810032BF7F /* AppDelegate.swift */; };
 		2487CD4A255D9C810032BF7F /* ConversationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2487CD49255D9C810032BF7F /* ConversationsVC.swift */; };
 		2487CD4D255D9C810032BF7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2487CD4B255D9C810032BF7F /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24065D48255DBF3F008BAA1E /* Extension+UIVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIVIew.swift"; sourceTree = "<group>"; };
 		2487CD42255D9C810032BF7F /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2487CD45255D9C810032BF7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2487CD49255D9C810032BF7F /* ConversationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsVC.swift; sourceTree = "<group>"; };
@@ -79,9 +81,8 @@
 		2487CD5B255D9D4A0032BF7F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2487CD7B255DB9380032BF7F /* Login */,
 				2487CD49255D9C810032BF7F /* ConversationsVC.swift */,
-				2487CD63255D9F310032BF7F /* LoginVC.swift */,
-				2487CD66255D9F3B0032BF7F /* RegisterVC.swift */,
 				2487CD6B255D9F6D0032BF7F /* PhotoViewerVC.swift */,
 				2487CD70255D9F870032BF7F /* VideoPlayerVC.swift */,
 				2487CD74255D9FB50032BF7F /* NewConversationVC.swift */,
@@ -117,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				2487CD45255D9C810032BF7F /* AppDelegate.swift */,
+				24065D48255DBF3F008BAA1E /* Extension+UIVIew.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -128,6 +130,15 @@
 				2487CD50255D9C840032BF7F /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		2487CD7B255DB9380032BF7F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2487CD63255D9F310032BF7F /* LoginVC.swift */,
+				2487CD66255D9F3B0032BF7F /* RegisterVC.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,6 +216,7 @@
 				2487CD75255D9FB50032BF7F /* NewConversationVC.swift in Sources */,
 				2487CD46255D9C810032BF7F /* AppDelegate.swift in Sources */,
 				2487CD78255D9FDB0032BF7F /* ProfileVC.swift in Sources */,
+				24065D49255DBF3F008BAA1E /* Extension+UIVIew.swift in Sources */,
 				2487CD6C255D9F6D0032BF7F /* PhotoViewerVC.swift in Sources */,
 				2487CD64255D9F310032BF7F /* LoginVC.swift in Sources */,
 				2487CD71255D9F870032BF7F /* VideoPlayerVC.swift in Sources */,
