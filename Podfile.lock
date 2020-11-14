@@ -1,4 +1,7 @@
 PODS:
+  - CocoaLumberjack/Core (3.7.0)
+  - CocoaLumberjack/Swift (3.7.0):
+    - CocoaLumberjack/Core
   - Firebase/Analytics (7.1.0):
     - Firebase/Core
   - Firebase/Auth (7.1.0):
@@ -71,6 +74,7 @@ PODS:
   - GoogleUtilities/UserDefaults (7.1.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.5.0)
+  - IQKeyboardManagerSwift (6.5.6)
   - leveldb-library (1.22)
   - nanopb (2.30906.0):
     - nanopb/decode (= 2.30906.0)
@@ -80,12 +84,15 @@ PODS:
   - PromisesObjC (1.2.11)
 
 DEPENDENCIES:
+  - CocoaLumberjack/Swift
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Database
+  - IQKeyboardManagerSwift
 
 SPEC REPOS:
   trunk:
+    - CocoaLumberjack
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -97,11 +104,13 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleUtilities
     - GTMSessionFetcher
+    - IQKeyboardManagerSwift
     - leveldb-library
     - nanopb
     - PromisesObjC
 
 SPEC CHECKSUMS:
+  CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
   Firebase: 78e8dd2e39d653de6270432ad84fe8b59f7bf4e8
   FirebaseAnalytics: 7f165a56dea86ddd5b8ce02af3bee982c683405c
   FirebaseAuth: f82c2cfcc1c107bb0a97735cdbce4eb2a601f710
@@ -113,10 +122,11 @@ SPEC CHECKSUMS:
   GoogleDataTransport: e4085e6762f36a6141738f46b0153473ce57fb18
   GoogleUtilities: f734da554aade8cc7928a31c2f3311897933a1bd
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
 
-PODFILE CHECKSUM: 525c9dc654c000e354dd8594547a571308bf0c3a
+PODFILE CHECKSUM: 20104ac47c84992554bd5902ef067d2457b79310
 
 COCOAPODS: 1.10.0

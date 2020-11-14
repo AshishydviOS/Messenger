@@ -10,6 +10,8 @@
 		24065D49255DBF3F008BAA1E /* Extension+UIVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24065D48255DBF3F008BAA1E /* Extension+UIVIew.swift */; };
 		246FB739255FA97C00F2E0E7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 246FB738255FA97C00F2E0E7 /* GoogleService-Info.plist */; };
 		246FB74D255FAC9000F2E0E7 /* Steps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246FB74C255FAC9000F2E0E7 /* Steps.swift */; };
+		246FB786255FBE2800F2E0E7 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246FB785255FBE2800F2E0E7 /* AppConstants.swift */; };
+		246FB78A255FBF1D00F2E0E7 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246FB789255FBF1D00F2E0E7 /* LogManager.swift */; };
 		2487CD46255D9C810032BF7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2487CD45255D9C810032BF7F /* AppDelegate.swift */; };
 		2487CD4A255D9C810032BF7F /* ConversationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2487CD49255D9C810032BF7F /* ConversationsVC.swift */; };
 		2487CD4D255D9C810032BF7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2487CD4B255D9C810032BF7F /* Main.storyboard */; };
@@ -29,6 +31,8 @@
 		24065D48255DBF3F008BAA1E /* Extension+UIVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIVIew.swift"; sourceTree = "<group>"; };
 		246FB738255FA97C00F2E0E7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		246FB74C255FAC9000F2E0E7 /* Steps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Steps.swift; sourceTree = "<group>"; };
+		246FB785255FBE2800F2E0E7 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		246FB789255FBF1D00F2E0E7 /* LogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		2487CD42255D9C810032BF7F /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2487CD45255D9C810032BF7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2487CD49255D9C810032BF7F /* ConversationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsVC.swift; sourceTree = "<group>"; };
@@ -58,6 +62,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		246FB780255FBD9E00F2E0E7 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				246FB789255FBF1D00F2E0E7 /* LogManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		246FB784255FBDFB00F2E0E7 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				246FB785255FBE2800F2E0E7 /* AppConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		2487CD39255D9C800032BF7F = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +99,8 @@
 		2487CD44255D9C810032BF7F /* Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				246FB784255FBDFB00F2E0E7 /* Constants */,
+				246FB780255FBD9E00F2E0E7 /* Utils */,
 				246FB74C255FAC9000F2E0E7 /* Steps.swift */,
 				2487CD5F255D9D750032BF7F /* Resources */,
 				2487CD5E255D9D680032BF7F /* ViewModels */,
@@ -269,11 +291,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2487CD4A255D9C810032BF7F /* ConversationsVC.swift in Sources */,
+				246FB78A255FBF1D00F2E0E7 /* LogManager.swift in Sources */,
 				246FB74D255FAC9000F2E0E7 /* Steps.swift in Sources */,
 				2487CD67255D9F3B0032BF7F /* RegisterVC.swift in Sources */,
 				2487CD75255D9FB50032BF7F /* NewConversationVC.swift in Sources */,
 				2487CD46255D9C810032BF7F /* AppDelegate.swift in Sources */,
 				2487CD78255D9FDB0032BF7F /* ProfileVC.swift in Sources */,
+				246FB786255FBE2800F2E0E7 /* AppConstants.swift in Sources */,
 				24065D49255DBF3F008BAA1E /* Extension+UIVIew.swift in Sources */,
 				2487CD6C255D9F6D0032BF7F /* PhotoViewerVC.swift in Sources */,
 				2487CD64255D9F310032BF7F /* LoginVC.swift in Sources */,
