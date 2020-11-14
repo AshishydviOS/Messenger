@@ -122,6 +122,7 @@ class RegisterVC: UIViewController {
     
     @objc func didTapChangeProfilePic() {
         print("Image button tapped!")
+        PresentPhotoActionSheet()
     }
     
     override func viewDidLayoutSubviews() {
@@ -220,8 +221,62 @@ extension RegisterVC : UITextFieldDelegate {
     }
 }
 
-extension RegisterVC : UIImagePickerControllerDelegate {
+//MARK: Selecting Picture and its delegate results to take the picture or select the photo
+//UINavigationControllerDelegate works with UIImagePickerControllerDelegate
+extension RegisterVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    //MARK: Custom Function
+    func PresentPhotoActionSheet() {
+        let actionSheet = UIAlertController(title: "Profile Picture",
+                                            message: "How would you like to select a picture?",
+                                            preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Take Photo",
+                                            style: .default,
+                                            handler: { [weak self](cameraAction) in
+                                                self?.presentCamera()
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Choose Photo",
+                                            style: .default,
+                                            handler: { [weak self](cameraAction) in
+                                                self?.presentPhotoPicker()
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel",
+                                            style: .cancel,
+                                            handler: { (cameraAction) in
+              
+        }))
+        
+        present(actionSheet, animated: true)
+    }
+    
+    func presentCamera() {
+        let vc              = UIImagePickerController()
+        vc.sourceType       = .camera
+        vc.delegate         = self
+        vc.allowsEditing    = true
+        present(vc, animated: true)
+    }
+    
+    func presentPhotoPicker() {
+        let vc              = UIImagePickerController()
+        vc.sourceType       = .photoLibrary
+        vc.delegate         = self
+        vc.allowsEditing    = true
+        present(vc, animated: true)
+    }
+    
+    //Calls when user click on cancel while taking the picture or Photo selection
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        <#code#>
+        picker.dismiss(animated: true)
+    }
+    
+    //Calls when user take the photo or select the photo
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else { return }
+        self.imageView.image = selectedImage
+        self.dismiss(animated: true)
     }
 }
