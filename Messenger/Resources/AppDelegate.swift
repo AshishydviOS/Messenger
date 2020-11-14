@@ -23,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
         
+        //MARK: Setup Logmanager
+        LogManager.sharedInstance.initLogger()
+        
         return true
     }
 

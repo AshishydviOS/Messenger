@@ -115,6 +115,7 @@ class LoginVC: UIViewController {
     
     //MARK: Firebase Login using email and password
     @objc private func loginButtonTapped(){
+        LogManager.sharedInstance.logVerbose(#file, methodName: #function, logMessage: "")
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
         
@@ -125,14 +126,22 @@ class LoginVC: UIViewController {
         
         //Firebase Login
         Firebase.Auth.auth().signIn(withEmail: email,
-                                    password: password) { (authResult, error) in
+                                    password: password) { [weak self] (authResult, error) in
+            
+            guard let strongSelf = self else {
+                return
+            }
+            
             guard let result = authResult, error == nil else {
+                LogManager.sharedInstance.logError(#file, methodName: #function, logMessage: "Firebase Sign in failed.")
                 print("Sign In error occured : Email : \(email)")
                 return
             }
             
             let user = result.user
-            print("Logged in user : \(user.email)")
+            print("Logged in user : \(user)")
+            LogManager.sharedInstance.logVerbose(#file, methodName: #function, logMessage: "Logged in user email : \(user.email ?? "No Email found for loggin user")")
+            strongSelf.navigationController?.dismiss(animated: true)
         }
     }
     

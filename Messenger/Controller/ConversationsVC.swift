@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ConversationsVC : UIViewController {
 
@@ -16,9 +17,15 @@ class ConversationsVC : UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let isLoggedIn = UserDefaults.standard.bool(forKey: "logged_in")
+        validateAuth()
         
-        if !isLoggedIn {
+    }
+    
+    private func validateAuth() {
+        LogManager.sharedInstance.logVerbose(#file, methodName: #function, logMessage: "User Validation function called")
+        //Check if No Firebase user available and
+        if Firebase.Auth.auth().currentUser == nil { //&& UDManager.sharedInstance.isLogin == false {
+            LogManager.sharedInstance.logVerbose(#file, methodName: #function, logMessage: "No Current user found. Navigate to login.")
             let vc = LoginVC()
             let nav = UINavigationController(rootViewController: vc)
             nav.modalPresentationStyle = .fullScreen

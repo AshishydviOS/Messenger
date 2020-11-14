@@ -20,5 +20,165 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C5A2402B-1D07-4EBB-B6F8-56BEE690CD41"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Messenger/Controller/Login/RegisterVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
+            landmarkName = "registerButtonTapped()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C5A2402B-1D07-4EBB-B6F8-56BEE690CD41 - c798ced999df6344"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Messenger.RegisterVC.(registerButtonTapped in _BF12507DC4EA27224CB0AD067865636C)() -&gt; ()"
+                  moduleName = "Messenger"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashishyadav/Desktop/Projects/Messenger/Messenger/Controller/Login/RegisterVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "193"
+                  endingLineNumber = "193"
+                  offsetFromSymbolStart = "2094">
+               </Location>
+               <Location
+                  uuid = "C5A2402B-1D07-4EBB-B6F8-56BEE690CD41 - b220179977f29714"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool) -&gt; () in Messenger.RegisterVC.(registerButtonTapped in _BF12507DC4EA27224CB0AD067865636C)() -&gt; ()"
+                  moduleName = "Messenger"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashishyadav/Desktop/Projects/Messenger/Messenger/Controller/Login/RegisterVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "193"
+                  endingLineNumber = "193"
+                  offsetFromSymbolStart = "344">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "227F2691-F79F-4BBB-AC1D-41959FEF4C75"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Messenger/Controller/Login/RegisterVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "registerButtonTapped()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "06315139-A0B4-4C22-AA67-2DF3D8AF36D7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Messenger/Controller/Login/RegisterVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
+            landmarkName = "registerButtonTapped()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "06315139-A0B4-4C22-AA67-2DF3D8AF36D7 - b220179977f29880"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool) -&gt; () in Messenger.RegisterVC.(registerButtonTapped in _BF12507DC4EA27224CB0AD067865636C)() -&gt; ()"
+                  moduleName = "Messenger"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashishyadav/Desktop/Projects/Messenger/Messenger/Controller/Login/RegisterVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "205"
+                  endingLineNumber = "205"
+                  offsetFromSymbolStart = "584">
+               </Location>
+               <Location
+                  uuid = "06315139-A0B4-4C22-AA67-2DF3D8AF36D7 - b502d2fca3e5d647"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Bool) -&gt; () in Messenger.RegisterVC.(registerButtonTapped in _BF12507DC4EA27224CB0AD067865636C)() -&gt; ()"
+                  moduleName = "Messenger"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashishyadav/Desktop/Projects/Messenger/Messenger/Controller/Login/RegisterVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "207"
+                  endingLineNumber = "207"
+                  offsetFromSymbolStart = "373">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "17F69743-5B6C-410B-9BAC-7111484EB952"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Messenger/Manager/DatabaseManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "userExists(with:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "17F69743-5B6C-410B-9BAC-7111484EB952 - 76d26bf54fe2ae0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Messenger.DatabaseManager.userExists(with: Swift.String, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "Messenger"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashishyadav/Desktop/Projects/Messenger/Messenger/Manager/DatabaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "931">
+               </Location>
+               <Location
+                  uuid = "17F69743-5B6C-410B-9BAC-7111484EB952 - 74a043ef3ff7a0a9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in Messenger.DatabaseManager.userExists(with: Swift.String, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "Messenger"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashishyadav/Desktop/Projects/Messenger/Messenger/Manager/DatabaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "120">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

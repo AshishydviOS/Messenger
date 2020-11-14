@@ -13,6 +13,7 @@
 		246FB786255FBE2800F2E0E7 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246FB785255FBE2800F2E0E7 /* AppConstants.swift */; };
 		246FB78A255FBF1D00F2E0E7 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246FB789255FBF1D00F2E0E7 /* LogManager.swift */; };
 		246FB78E255FC07E00F2E0E7 /* UDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246FB78D255FC07E00F2E0E7 /* UDManager.swift */; };
+		246FB791255FE44500F2E0E7 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246FB790255FE44500F2E0E7 /* DatabaseManager.swift */; };
 		2487CD46255D9C810032BF7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2487CD45255D9C810032BF7F /* AppDelegate.swift */; };
 		2487CD4A255D9C810032BF7F /* ConversationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2487CD49255D9C810032BF7F /* ConversationsVC.swift */; };
 		2487CD4D255D9C810032BF7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2487CD4B255D9C810032BF7F /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 		246FB785255FBE2800F2E0E7 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		246FB789255FBF1D00F2E0E7 /* LogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		246FB78D255FC07E00F2E0E7 /* UDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDManager.swift; sourceTree = "<group>"; };
+		246FB790255FE44500F2E0E7 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		2487CD42255D9C810032BF7F /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2487CD45255D9C810032BF7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2487CD49255D9C810032BF7F /* ConversationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsVC.swift; sourceTree = "<group>"; };
@@ -67,7 +69,6 @@
 		246FB780255FBD9E00F2E0E7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				246FB789255FBF1D00F2E0E7 /* LogManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -76,9 +77,18 @@
 			isa = PBXGroup;
 			children = (
 				246FB785255FBE2800F2E0E7 /* AppConstants.swift */,
-				246FB78D255FC07E00F2E0E7 /* UDManager.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		246FB793255FE44A00F2E0E7 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				246FB789255FBF1D00F2E0E7 /* LogManager.swift */,
+				246FB790255FE44500F2E0E7 /* DatabaseManager.swift */,
+				246FB78D255FC07E00F2E0E7 /* UDManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		2487CD39255D9C800032BF7F = {
@@ -103,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				246FB74C255FAC9000F2E0E7 /* Steps.swift */,
+				246FB793255FE44A00F2E0E7 /* Manager */,
 				246FB784255FBDFB00F2E0E7 /* Constants */,
 				246FB780255FBD9E00F2E0E7 /* Utils */,
 				2487CD5F255D9D750032BF7F /* Resources */,
@@ -299,6 +310,7 @@
 				2487CD67255D9F3B0032BF7F /* RegisterVC.swift in Sources */,
 				2487CD75255D9FB50032BF7F /* NewConversationVC.swift in Sources */,
 				2487CD46255D9C810032BF7F /* AppDelegate.swift in Sources */,
+				246FB791255FE44500F2E0E7 /* DatabaseManager.swift in Sources */,
 				2487CD78255D9FDB0032BF7F /* ProfileVC.swift in Sources */,
 				246FB786255FBE2800F2E0E7 /* AppConstants.swift in Sources */,
 				24065D49255DBF3F008BAA1E /* Extension+UIVIew.swift in Sources */,
