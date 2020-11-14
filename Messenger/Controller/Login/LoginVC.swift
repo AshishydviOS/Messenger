@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginVC: UIViewController {
     
@@ -112,6 +113,7 @@ class LoginVC: UIViewController {
                                    height: 52)
     }
     
+    //MARK: Firebase Login using email and password
     @objc private func loginButtonTapped(){
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
@@ -122,6 +124,16 @@ class LoginVC: UIViewController {
         }
         
         //Firebase Login
+        Firebase.Auth.auth().signIn(withEmail: email,
+                                    password: password) { (authResult, error) in
+            guard let result = authResult, error == nil else {
+                print("Sign In error occured : Email : \(email)")
+                return
+            }
+            
+            let user = result.user
+            print("Logged in user : \(user.email)")
+        }
     }
     
     func alertUserLoginError(){

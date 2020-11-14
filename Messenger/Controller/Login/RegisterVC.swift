@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class RegisterVC: UIViewController {
 
@@ -115,8 +116,13 @@ class RegisterVC: UIViewController {
         scrollView.addSubview(passwordField)
         scrollView.addSubview(registerButton)
         
+        registerButton.addTarget(self,
+                                 action: #selector(registerButtonTapped),
+                                 for: .touchUpInside)
+        
         imageView.isUserInteractionEnabled = true
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapChangeProfilePic))
+        let gesture = UITapGestureRecognizer(target: self,
+                                             action: #selector(didTapChangeProfilePic))
         imageView.addGestureRecognizer(gesture)
     }
     
@@ -163,6 +169,7 @@ class RegisterVC: UIViewController {
                                    height: 52)
     }
     
+    //MARK: Firebase register using Email and password
     @objc private func registerButtonTapped(){
         firstNameField.resignFirstResponder()
         lastNameField.resignFirstResponder()
@@ -183,7 +190,15 @@ class RegisterVC: UIViewController {
             return
         }
         
-        //Firebase Login
+        Firebase.Auth.auth().createUser(withEmail: email, password: password) { (AuthResult, error) in
+            guard let result = AuthResult, error == nil else {
+                print("Error creating user")
+                return
+            }
+            
+            let user = result.user
+            print("Created User : \(user)")
+        }
     }
     
     func alertUserLoginError(){
