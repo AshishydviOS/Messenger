@@ -89,7 +89,10 @@ class RegisterVC: UIViewController {
     
     private let imageView : UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "logo")
+        imageView.image = UIImage(named: "person")
+        imageView.clipsToBounds = true
+        imageView.layer.borderWidth = 1
+        imageView.layer.borderColor = UIColor.lightGray.cgColor
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -97,12 +100,6 @@ class RegisterVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register", style: .done, target: self, action: #selector(didTapRegister))
-         
-        registerButton.addTarget(self,
-                              action: #selector(registerButtonTapped),
-                              for: .touchUpInside)
         
         firstNameField.delegate = self
         lastNameField.delegate = self
@@ -136,6 +133,7 @@ class RegisterVC: UIViewController {
                                  y: 20,
                                  width: size,
                                  height: size)
+        imageView.layer.cornerRadius = (size / 2)
         
         firstNameField.frame = CGRect(x: 30,
                                   y: imageView.bottom + 10,
@@ -219,5 +217,11 @@ extension RegisterVC : UITextFieldDelegate {
             registerButtonTapped()
         }
         return true
+    }
+}
+
+extension RegisterVC : UIImagePickerControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        <#code#>
     }
 }

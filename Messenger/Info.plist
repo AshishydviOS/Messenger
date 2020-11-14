@@ -39,5 +39,13 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
+	<key>NSCameraUsageDescription</key>
+	<string>Please allow permission to access camera.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Please provide permission.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Please provide permission.</string>
 </dict>
 </plist>
