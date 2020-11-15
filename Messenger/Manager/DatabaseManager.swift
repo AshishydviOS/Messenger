@@ -28,11 +28,11 @@ extension DatabaseManager {
         database.child(safeEmail).observeSingleEvent(of: .value) { (snapshot) in
             guard snapshot.value as? NSDictionary != nil else {
                 LogManager.sharedInstance.logVerbose(#file, methodName: #function, logMessage: "New user")
-                completion(true)
+                completion(false)
                 return
             }
             LogManager.sharedInstance.logVerbose(#file, methodName: #function, logMessage: "Existing user")
-            completion(false)
+            completion(true)
         }
     }
     

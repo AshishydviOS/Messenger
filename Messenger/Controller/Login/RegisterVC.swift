@@ -190,13 +190,13 @@ class RegisterVC: UIViewController {
             return
         }
         
-        DatabaseManager.shared.userExists(with: email) { [weak self] (userExistFlag) in
+        DatabaseManager.shared.userExists(with: email) { [weak self] (existing) in
             
             guard let strongSelf = self else {
                 return
             }
             
-            if !userExistFlag {
+            if existing {
                 //user already exist
                 strongSelf.alertUserLoginError(msg: "User already exist")
                 return
