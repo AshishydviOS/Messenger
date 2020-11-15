@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import GoogleSignIn
 
 class LoginVC: UIViewController {
     
@@ -64,9 +65,31 @@ class LoginVC: UIViewController {
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
-
+    
+    private let googleLogInButton = GIDSignInButton()
+    
+    private var loginObserver : NSObjectProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loginObserver = NotificationCenter.default.addObserver(forName: .didLogInNotification,
+                                                               object: nil,
+                                                               queue: .main) { [weak self] _ in
+            
+            guard let strongSelf = self else {
+                return
+            }
+            
+            strongSelf.navigationController?.dismiss(animated: true)
+        }
+        
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        
+        // Automatically sign in the user.
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+
+        
         title = "Log In"
         view.backgroundColor = .white
         
@@ -85,6 +108,13 @@ class LoginVC: UIViewController {
         scrollView.addSubview(emailField)
         scrollView.addSubview(passwordField)
         scrollView.addSubview(loginButton)
+        scrollView.addSubview(googleLogInButton)
+    }
+    
+    deinit {
+        if let observer = loginObserver {
+            NotificationCenter.default.removeObserver(observer)
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -111,6 +141,11 @@ class LoginVC: UIViewController {
                                    y: passwordField.bottom + 20,
                                    width: scrollView.width - 60,
                                    height: 52)
+        
+        googleLogInButton.frame = CGRect(x: 30,
+                                         y: loginButton.bottom + 20,
+                                         width: scrollView.width - 60,
+                                         height: 52)
     }
     
     //MARK: Firebase Login using email and password
@@ -141,6 +176,7 @@ class LoginVC: UIViewController {
             let user = result.user
             print("Logged in user : \(user)")
             LogManager.sharedInstance.logVerbose(#file, methodName: #function, logMessage: "Logged in user email : \(user.email ?? "No Email found for loggin user")")
+            
             strongSelf.navigationController?.dismiss(animated: true)
         }
     }

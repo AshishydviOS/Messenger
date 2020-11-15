@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		24065D49255DBF3F008BAA1E /* Extension+UIVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24065D48255DBF3F008BAA1E /* Extension+UIVIew.swift */; };
+		245BC7CF2561A06B00A64B57 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245BC7CE2561A06B00A64B57 /* Extension.swift */; };
 		246FB739255FA97C00F2E0E7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 246FB738255FA97C00F2E0E7 /* GoogleService-Info.plist */; };
 		246FB74D255FAC9000F2E0E7 /* Steps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246FB74C255FAC9000F2E0E7 /* Steps.swift */; };
 		246FB786255FBE2800F2E0E7 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246FB785255FBE2800F2E0E7 /* AppConstants.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		103ABF05F37FCA083FC5B711 /* Pods-Messenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Messenger.release.xcconfig"; path = "Target Support Files/Pods-Messenger/Pods-Messenger.release.xcconfig"; sourceTree = "<group>"; };
 		24065D48255DBF3F008BAA1E /* Extension+UIVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIVIew.swift"; sourceTree = "<group>"; };
+		245BC7CE2561A06B00A64B57 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		246FB738255FA97C00F2E0E7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		246FB74C255FAC9000F2E0E7 /* Steps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Steps.swift; sourceTree = "<group>"; };
 		246FB785255FBE2800F2E0E7 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			children = (
 				2487CD45255D9C810032BF7F /* AppDelegate.swift */,
 				24065D48255DBF3F008BAA1E /* Extension+UIVIew.swift */,
+				245BC7CE2561A06B00A64B57 /* Extension.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				2487CD3E255D9C800032BF7F /* Sources */,
 				2487CD3F255D9C800032BF7F /* Frameworks */,
 				2487CD40255D9C800032BF7F /* Resources */,
+				8B4AF13836D1C89F9D699D97 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -297,6 +301,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		8B4AF13836D1C89F9D699D97 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Messenger/Pods-Messenger-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Messenger/Pods-Messenger-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Messenger/Pods-Messenger-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -304,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				245BC7CF2561A06B00A64B57 /* Extension.swift in Sources */,
 				2487CD4A255D9C810032BF7F /* ConversationsVC.swift in Sources */,
 				246FB78A255FBF1D00F2E0E7 /* LogManager.swift in Sources */,
 				246FB74D255FAC9000F2E0E7 /* Steps.swift in Sources */,

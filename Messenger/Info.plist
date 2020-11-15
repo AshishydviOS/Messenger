@@ -16,10 +16,29 @@
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.921308232139-htsf1mmmic8shn72f1ovlpnb83at9pe9</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Please allow permission to access camera.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Please provide permission.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Please provide permission.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
@@ -39,13 +58,5 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
-	<key>NSCameraUsageDescription</key>
-	<string>Please allow permission to access camera.</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Please provide permission.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Please provide permission.</string>
 </dict>
 </plist>

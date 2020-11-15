@@ -24,7 +24,11 @@ import Firebase
 //MARK: Part 7 : Google Sign In & Sign Out
 //------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------
+//1. Install POD
+//2. Work on Appdelegate file using below link
+//https://developers.google.com/identity/sign-in/ios/start-integrating
 
+//3.
 
 
 

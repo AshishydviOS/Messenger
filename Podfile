@@ -9,4 +9,7 @@ pod 'Firebase/Database'
 pod 'CocoaLumberjack/Swift'
 pod 'IQKeyboardManagerSwift'
 
+#Sign In with Google
+pod 'GoogleSignIn'
+
 end

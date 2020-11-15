@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import GoogleSignIn
 
 class ProfileVC: UIViewController {
     
@@ -50,11 +51,17 @@ extension ProfileVC : UITableViewDelegate, UITableViewDataSource {
     func callLogoutBtn() {
         let actionSheet = UIAlertController(title: "", message: "Are you share you want to logout?", preferredStyle: .actionSheet)
         
-        actionSheet.addAction(UIAlertAction(title: "Log out", style: .destructive, handler: { [weak self] _ in
+        actionSheet.addAction(UIAlertAction(title: "Log out",
+                                            style: .destructive,
+                                            handler: { [weak self] _ in
+                                        
             guard let strongSelf = self else {
                 return
             }
             
+            //Google Log out
+            GIDSignIn.sharedInstance()?.signOut()
+                                                
             do {
                 try Firebase.Auth.auth().signOut()
                 let vc = LoginVC()
