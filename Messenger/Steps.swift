@@ -34,7 +34,9 @@ import Firebase
 //------------------------------------------------------------------------------------------
 //1. Setup Conversation Screen
 //2. Setup Logout button
-//3.
+//3. setup Facebook login
+//4. setup Facebook logout
+
 
 
 
