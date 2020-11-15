@@ -8,5 +8,6 @@ pod 'Firebase/Auth'
 pod 'Firebase/Database'
 pod 'CocoaLumberjack/Swift'
 pod 'IQKeyboardManagerSwift'
+pod 'FBSDKLoginKit'
 
 end
