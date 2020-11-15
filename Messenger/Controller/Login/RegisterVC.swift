@@ -196,7 +196,7 @@ class RegisterVC: UIViewController {
                 return
             }
             
-            guard !userExistFlag else {
+            if !userExistFlag {
                 //user already exist
                 strongSelf.alertUserLoginError(msg: "User already exist")
                 return

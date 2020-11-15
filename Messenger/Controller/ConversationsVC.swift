@@ -12,7 +12,6 @@ class ConversationsVC : UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -23,8 +22,8 @@ class ConversationsVC : UIViewController {
     
     private func validateAuth() {
         LogManager.sharedInstance.logVerbose(#file, methodName: #function, logMessage: "User Validation function called")
-        //Check if No Firebase user available and
-        if Firebase.Auth.auth().currentUser == nil { //&& UDManager.sharedInstance.isLogin == false {
+        //Check if No Firebase user available
+        if Firebase.Auth.auth().currentUser == nil {
             LogManager.sharedInstance.logVerbose(#file, methodName: #function, logMessage: "No Current user found. Navigate to login.")
             let vc = LoginVC()
             let nav = UINavigationController(rootViewController: vc)

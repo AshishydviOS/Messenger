@@ -26,16 +26,19 @@ extension DatabaseManager {
         safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
         
         database.child(safeEmail).observeSingleEvent(of: .value) { (snapshot) in
-            guard snapshot.value as? String != nil else {
-                completion(false)
+            guard snapshot.value as? NSDictionary != nil else {
+                LogManager.sharedInstance.logVerbose(#file, methodName: #function, logMessage: "New user")
+                completion(true)
                 return
             }
-            completion(true)
+            LogManager.sharedInstance.logVerbose(#file, methodName: #function, logMessage: "Existing user")
+            completion(false)
         }
     }
     
     /// insert new user to database
     public func insertUser(with user : ChatAppUser) {
+        LogManager.sharedInstance.logVerbose(#file, methodName: #function, logMessage: "Insert user")
         database = Database.database().reference()
         database.child(user.safeEmail).setValue([
             "first_name" : user.firstName,
