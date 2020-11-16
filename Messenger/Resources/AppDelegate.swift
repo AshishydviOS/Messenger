@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         //MARK: IQKeyboardManager Intilization
-        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.enableAutoToolbar = false
         
         //MARK: Setup Logmanager

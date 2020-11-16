@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		24065D49255DBF3F008BAA1E /* Extension+UIVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24065D48255DBF3F008BAA1E /* Extension+UIVIew.swift */; };
+		245BC81B2561BD0D00A64B57 /* ProgressHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245BC81A2561BD0D00A64B57 /* ProgressHandler.swift */; };
+		245BC85C2561C08200A64B57 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245BC85B2561C08200A64B57 /* ChatVC.swift */; };
 		246FB739255FA97C00F2E0E7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 246FB738255FA97C00F2E0E7 /* GoogleService-Info.plist */; };
 		246FB74D255FAC9000F2E0E7 /* Steps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246FB74C255FAC9000F2E0E7 /* Steps.swift */; };
 		246FB786255FBE2800F2E0E7 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246FB785255FBE2800F2E0E7 /* AppConstants.swift */; };
@@ -31,6 +33,8 @@
 /* Begin PBXFileReference section */
 		103ABF05F37FCA083FC5B711 /* Pods-Messenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Messenger.release.xcconfig"; path = "Target Support Files/Pods-Messenger/Pods-Messenger.release.xcconfig"; sourceTree = "<group>"; };
 		24065D48255DBF3F008BAA1E /* Extension+UIVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIVIew.swift"; sourceTree = "<group>"; };
+		245BC81A2561BD0D00A64B57 /* ProgressHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHandler.swift; sourceTree = "<group>"; };
+		245BC85B2561C08200A64B57 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		246FB738255FA97C00F2E0E7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		246FB74C255FAC9000F2E0E7 /* Steps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Steps.swift; sourceTree = "<group>"; };
 		246FB785255FBE2800F2E0E7 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
@@ -87,6 +91,7 @@
 				246FB789255FBF1D00F2E0E7 /* LogManager.swift */,
 				246FB790255FE44500F2E0E7 /* DatabaseManager.swift */,
 				246FB78D255FC07E00F2E0E7 /* UDManager.swift */,
+				245BC81A2561BD0D00A64B57 /* ProgressHandler.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 				2487CD70255D9F870032BF7F /* VideoPlayerVC.swift */,
 				2487CD74255D9FB50032BF7F /* NewConversationVC.swift */,
 				2487CD77255D9FDB0032BF7F /* ProfileVC.swift */,
+				245BC85B2561C08200A64B57 /* ChatVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -218,6 +224,7 @@
 				2487CD3E255D9C800032BF7F /* Sources */,
 				2487CD3F255D9C800032BF7F /* Frameworks */,
 				2487CD40255D9C800032BF7F /* Resources */,
+				103E796926FD9FC329F2FB09 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -275,6 +282,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		103E796926FD9FC329F2FB09 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Messenger/Pods-Messenger-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Messenger/Pods-Messenger-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Messenger/Pods-Messenger-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3E83A8446F3950A7EE08C70A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -304,8 +328,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				245BC85C2561C08200A64B57 /* ChatVC.swift in Sources */,
 				2487CD4A255D9C810032BF7F /* ConversationsVC.swift in Sources */,
 				246FB78A255FBF1D00F2E0E7 /* LogManager.swift in Sources */,
+				245BC81B2561BD0D00A64B57 /* ProgressHandler.swift in Sources */,
 				246FB74D255FAC9000F2E0E7 /* Steps.swift in Sources */,
 				2487CD67255D9F3B0032BF7F /* RegisterVC.swift in Sources */,
 				2487CD75255D9FB50032BF7F /* NewConversationVC.swift in Sources */,

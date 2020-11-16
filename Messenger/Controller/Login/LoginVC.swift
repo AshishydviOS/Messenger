@@ -125,11 +125,17 @@ class LoginVC: UIViewController {
         }
         
         //Firebase Login
+        ProgressHandler.sharedInstance.showProgress()
+        
         Firebase.Auth.auth().signIn(withEmail: email,
                                     password: password) { [weak self] (authResult, error) in
             
             guard let strongSelf = self else {
                 return
+            }
+            
+            DispatchQueue.main.async {
+                ProgressHandler.sharedInstance.hideProgress()
             }
             
             guard let result = authResult, error == nil else {

@@ -9,21 +9,51 @@ import UIKit
 
 class NewConversationVC: UIViewController {
 
+    private let searchBar : UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.placeholder = "Search for users..."
+        return searchBar
+    }()
+    
+    private let tableView : UITableView = {
+        let table = UITableView()
+        table.isHidden = true
+        table.register(UITableViewCell.self, forHeaderFooterViewReuseIdentifier: "cell")
+        return table
+    }()
+    
+    private let NoResultsLabel : UILabel = {
+        let label = UILabel()
+        label.isHidden = true
+        label.text = "No Results"
+        label.textAlignment = .center
+        label.textColor = .gray
+        label.font = .systemFont(ofSize: 21, weight: .medium )
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        searchBar.delegate = self
+        self.view.backgroundColor = .white
+        self.navigationController?.navigationBar.topItem?.titleView = searchBar
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel",
+                                                                 style: .done,
+                                                                 target: self,
+                                                                 action: #selector(dismissSelf))
+        
+        searchBar.becomeFirstResponder()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func dismissSelf(){
+        self.dismiss(animated: true)
     }
-    */
+}
 
+extension NewConversationVC : UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+    }
 }

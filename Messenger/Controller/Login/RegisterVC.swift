@@ -190,10 +190,15 @@ class RegisterVC: UIViewController {
             return
         }
         
+        ProgressHandler.sharedInstance.showProgress()
         DatabaseManager.shared.userExists(with: email) { [weak self] (existing) in
             
             guard let strongSelf = self else {
                 return
+            }
+            
+            DispatchQueue.main.async {
+                ProgressHandler.sharedInstance.hideProgress()
             }
             
             if existing {
@@ -202,7 +207,13 @@ class RegisterVC: UIViewController {
                 return
             }
             
+            ProgressHandler.sharedInstance.showProgress()
             Firebase.Auth.auth().createUser(withEmail: email, password: password) { (AuthResult, error) in
+                
+                DispatchQueue.main.async {
+                    ProgressHandler.sharedInstance.hideProgress()
+                }
+                
                 guard  AuthResult != nil, error == nil else {
                     print("Error creating user")
                     return
