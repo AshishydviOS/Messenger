@@ -13,6 +13,7 @@ class UDManager{
     fileprivate static let TOKEN = "token"
     fileprivate static let USER_NAME = "userName"
     fileprivate static let USER_EMAIL = "userEmail"
+    fileprivate static let USER_PROFILE_URL = "userProfileUrl"
     
     static let sharedInstance = UDManager()
     fileprivate init(){}
@@ -52,12 +53,21 @@ class UDManager{
            set{ userDefaults.set(newValue, forKey: UDManager.USER_EMAIL)}
     }
     
+    var userProfileUrl : String{
+        get{ if let value = userDefaults.string(forKey: UDManager.USER_PROFILE_URL){
+            return value
+        }else{return ""}
+        }
+        set{ userDefaults.set(newValue, forKey: UDManager.USER_PROFILE_URL)}
+    }
+    
     
     func clearLoginData(){
         userDefaults.set(false, forKey: UDManager.IS_LOGIN)
         userDefaults.set("", forKey: UDManager.USER_NAME)
         userDefaults.set("", forKey: UDManager.USER_EMAIL)
         userDefaults.set("", forKey: UDManager.TOKEN)
+        userDefaults.set("", forKey: UDManager.USER_PROFILE_URL)
     }
     
 }

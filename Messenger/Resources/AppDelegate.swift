@@ -7,7 +7,6 @@
 
 import UIKit
 import Firebase
-import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,10 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //FireBase Setup
         FirebaseApp.configure()
-        
-        //MARK: IQKeyboardManager Intilization
-        IQKeyboardManager.shared.enable = false
-        IQKeyboardManager.shared.enableAutoToolbar = false
         
         //MARK: Setup Logmanager
         LogManager.sharedInstance.initLogger()

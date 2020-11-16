@@ -7,6 +7,9 @@ target 'Messenger' do
 pod 'Firebase/Analytics'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
+pod 'Firebase/Storage'
+
+
 pod 'CocoaLumberjack/Swift'
 #pod 'IQKeyboardManagerSwift'
 

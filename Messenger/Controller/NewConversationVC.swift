@@ -18,7 +18,6 @@ class NewConversationVC: UIViewController {
     private let tableView : UITableView = {
         let table = UITableView()
         table.isHidden = true
-        table.register(UITableViewCell.self, forHeaderFooterViewReuseIdentifier: "cell")
         return table
     }()
     

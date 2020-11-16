@@ -219,9 +219,30 @@ class RegisterVC: UIViewController {
                     return
                 }
                 
-                DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName,
-                                                                    lastName: lastName,
-                                                                    emailAddress: email))
+                let chatUser = ChatAppUser(firstName: firstName,
+                                           lastName: lastName,
+                                           emailAddress: email)
+                
+                DatabaseManager.shared.insertUser(with: chatUser) { (success) in
+                    if success {
+                        //upload Image
+                        guard  let image = strongSelf.imageView.image, let data = image.pngData() else {
+                            return
+                        }
+                        
+//                        /images/ashish-yadav-gmail-com_Profile_Picture.png
+                        let fileName = chatUser.profilePictureFileName
+                        StorageManager.shared.uploadProfilePicture(with: data, fileName: fileName) { (result) in
+                            switch result {
+                                case .success(let downloadUrl):
+                                    print(downloadUrl)
+                                    UDManager.sharedInstance.userProfileUrl = downloadUrl
+                                case .failure(let error):
+                                    print("Storage Manager error : \(error)")
+                            }
+                        }
+                    }
+                }
                 strongSelf.navigationController?.dismiss(animated: true)
             }
         }

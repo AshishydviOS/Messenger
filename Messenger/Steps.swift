@@ -22,4 +22,6 @@ import Firebase
 //MARK: Part 8 : Building User Interface & Dependencies
 //------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------
-//1. 
+//1. image storage with registration screen is done
+//2. Facebook and Google image profile upload will be done its own branch
+
