@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import SDWebImage
 
 class ProfileVC: UIViewController {
     
@@ -17,14 +18,67 @@ class ProfileVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTV(TV: profileTV)
+        profileTV.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        profileTV.tableHeaderView = createTableHeader()
     }
     
     func setupTV(TV : UITableView) {
-        TV.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         TV.delegate = self
         TV.dataSource = self
     }
     
+    
+    func createTableHeader() -> UIView? {
+        let safeEmail = DatabaseManager.shared.safeEmail(emailAddress: UDManager.sharedInstance.userEmail)
+        let fileName = safeEmail + "_profile_picture.png"
+        let path = "images/\(fileName)"
+        
+        let headerView = UIView(frame: CGRect(x: 0,
+                                        y: 0,
+                                        width: self.view.width,
+                                        height: 300))
+        headerView.backgroundColor = .blue
+        let ImageView = UIImageView(frame: CGRect(x: (view.width - 150)/2,
+                                                  y: 75,
+                                                  width: 150,
+                                                  height: 150))
+        ImageView.contentMode = .scaleAspectFill
+        ImageView.layer.borderWidth = 3
+        ImageView.layer.borderColor = UIColor.white.cgColor
+        ImageView.backgroundColor = .white
+        ImageView.layer.masksToBounds = true
+        ImageView.layer.cornerRadius = ImageView.width / 2
+        headerView.addSubview(ImageView)
+        
+        StorageManager.shared.downloadURL(for: path) { [weak self] (result) in
+            
+            guard let strongSelf = self else {
+                return
+            }
+            
+            switch result {
+            case .success(let url):
+                strongSelf.downloadImage(imageView: ImageView, url: url)
+            case .failure(let error):
+                print("Failed to get download url : \(error)")
+            }
+        }
+        
+        return headerView
+    }
+    
+    func downloadImage(imageView : UIImageView, url : URL) {
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
+            guard let data = data, error == nil else {
+                return
+            }
+
+            DispatchQueue.main.async {
+                let image = UIImage(data: data)
+                imageView.image = image
+            }
+        }.resume()
+    }
 }
 
 extension ProfileVC : UITableViewDelegate, UITableViewDataSource {

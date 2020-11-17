@@ -146,6 +146,9 @@ class LoginVC: UIViewController {
             
             let user = result.user
             print("Logged in user : \(user)")
+            
+            UDManager.sharedInstance.userEmail = email
+            
             LogManager.sharedInstance.logVerbose(#file, methodName: #function, logMessage: "Logged in user email : \(user.email ?? "No Email found for loggin user")")
             strongSelf.navigationController?.dismiss(animated: true)
         }
