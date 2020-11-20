@@ -24,14 +24,24 @@ struct Sender : SenderType {
 
 class ChatVC: MessagesViewController {
     
+    public static var dateFormatter : DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .long
+        formatter.locale = .current
+        return formatter
+    }()
+    
     public let otherUserEmail : String
     public var isNewConversation = false
     
     private var messages = [Message]()
     
-    private var selfSender = Sender(photoURL: "",
-                                    senderId: "1",
-                                    displayName: "Ashish Yadav")
+    private var selfSender : Sender {
+        Sender(photoURL: "",
+               senderId: UDManager.sharedInstance.userEmail,
+               displayName: "Ashish Yadav")
+    }
     
     init(with email : String) {
         self.otherUserEmail = email
@@ -68,12 +78,35 @@ extension ChatVC : InputBarAccessoryViewDelegate {
         //send Message
         if isNewConversation  {
             //create convo in database
-            
+            let message = Message(sender: selfSender ,
+                                  messageId: createMessageID(),
+                                  sentDate: Date(),
+                                  kind: .text(text))
+            DatabaseManager.shared.createNewConversation(with: otherUserEmail,
+                                                         firstMessage: message) { [weak self] (success) in
+                if success {
+                    print("Message Sent ")
+                }
+                else {
+                    print("Failed to send")
+                }
+            }
         }
         else {
             //append to existing conversation
             
         }
+    }
+    
+    private func createMessageID() -> String {
+        
+        let dateString = ChatVC.dateFormatter.string(from: Date())
+        
+        //date, otheruseremail, senderemail, randomInt
+        let currentUserEmail = UDManager.sharedInstance.userEmail
+        let newIdentifier = "\(otherUserEmail)_\(currentUserEmail)_\(dateString)"
+        print("Create message id : \(newIdentifier)")
+        return newIdentifier
     }
 }
 
