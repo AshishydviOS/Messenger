@@ -51,8 +51,24 @@ class ConversationsVC : UIViewController {
     
     @objc func didComposeTapButton(){
         let vc = NewConversationVC()
+        vc.completion = { [weak self] result in
+            self?.createNewConversation(result: result)
+        }
         let navVC = UINavigationController(rootViewController: vc)
         present(navVC, animated: true)
+    }
+    
+    func createNewConversation(result : [String : String]) {
+        guard let name = result["name"], let email = result["email"] else {
+            return
+        }
+        
+        let vc = ChatVC(with: email)
+        vc.title = name
+        if #available(iOS 11.0, *) {
+            vc.navigationItem.largeTitleDisplayMode = .never
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func setupTV(TV : UITableView) {

@@ -8,7 +8,9 @@
 import UIKit
 
 class NewConversationVC: UIViewController {
-
+    
+    public var completion : (([String : String]) -> (Void))?
+    
     private var users = [[String : String]]()
     private var results = [[String : String]]()
     private var hasFetched = false
@@ -84,7 +86,10 @@ extension NewConversationVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        //Start Conversation
+        let targetUserData = results[indexPath.row]
+        dismiss(animated: true) { [weak self] in
+            self?.completion?(targetUserData)
+        }
     }
 }
 
