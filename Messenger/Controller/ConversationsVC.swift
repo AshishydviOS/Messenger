@@ -65,6 +65,7 @@ class ConversationsVC : UIViewController {
         
         let vc = ChatVC(with: email)
         vc.title = name
+        vc.isNewConversation = true
         if #available(iOS 11.0, *) {
             vc.navigationItem.largeTitleDisplayMode = .never
         }
@@ -111,7 +112,7 @@ extension ConversationsVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let vc = ChatVC()
+        let vc = ChatVC(with: "abc@gmail.com")
         vc.title = "Ashish Yadav"
         if #available(iOS 11.0, *) {
             vc.navigationItem.largeTitleDisplayMode = .never

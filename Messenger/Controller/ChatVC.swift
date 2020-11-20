@@ -7,7 +7,7 @@
 
 import UIKit
 import MessageKit
-
+import InputBarAccessoryView
 
 struct Message : MessageType {
     var sender: SenderType
@@ -44,21 +44,36 @@ class ChatVC: MessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        messages.append(Message(sender: selfSender,
-                                messageId: "1",
-                                sentDate: Date(),
-                                kind: .text("Hello World Message")))
-        
-        messages.append(Message(sender: selfSender,
-                                messageId: "2",
-                                sentDate: Date(),
-                                kind: .text("Hello World Message. Hello World Message. Hello World Message. Hello World Message. Hello World Message.")))
-        
-        
         messagesCollectionView.messagesDataSource =  self
         messagesCollectionView.messagesLayoutDelegate =  self
         messagesCollectionView.messagesDisplayDelegate =  self
+        messageInputBar.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        messageInputBar.inputTextView.becomeFirstResponder()
+    }
+    
+}
+
+extension ChatVC : InputBarAccessoryViewDelegate {
+    func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
+        guard !text.trimmingCharacters(in: .whitespaces).isEmpty  else {
+            return
+        }
+        
+        print("Sending : \(text)")
+        
+        //send Message
+        if isNewConversation  {
+            //create convo in database
+            
+        }
+        else {
+            //append to existing conversation
+            
+        }
     }
 }
 
