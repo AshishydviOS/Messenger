@@ -75,7 +75,8 @@ class ConversationsVC : UIViewController {
     func setupTV(TV : UITableView) {
         TV.delegate = self
         TV.dataSource = self
-        TV.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        TV.register(ConversationTVC.self,
+                    forCellReuseIdentifier: ConversationTVC.identifier)
     }
     
     private func validateAuth() {
