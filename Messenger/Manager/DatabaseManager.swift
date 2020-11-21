@@ -160,6 +160,7 @@ extension DatabaseManager {
     /// Creates a new conversation with target user email and first message sent
     public func createNewConversation(with otherUserEmail : String,
                                       firstMessage : Message,
+                                      name : String,
                                       completion : @escaping (Bool) -> Void)
     {
         let safeEmail = DatabaseManager.shared.safeEmail(emailAddress: UDManager.sharedInstance.userEmail)
@@ -200,13 +201,15 @@ extension DatabaseManager {
             let conversationID = "conversation_\(firstMessage.messageId)"
             
             let newCoversationData : [String : Any] = [
-                "id"                : conversationID,
-                "other_user_email"  : otherUserEmail,
-                "latest_message"    : [
-                    "date"      : dateString,
-                    "message"   : message,
-                    "is_read"   : false
-                ]
+                FirebaseConstant.conversation_id   : conversationID,
+                FirebaseConstant.other_user_email  : otherUserEmail,
+                FirebaseConstant.name              : name,
+                FirebaseConstant.latest_message    :
+                    [
+                        FirebaseConstant.date      : dateString,
+                        FirebaseConstant.message   : message,
+                        FirebaseConstant.is_read   : false
+                    ]
             ]
             
             if var conversations = userNode[FirebaseConstant.conversations] as? [[String : Any]] {
@@ -221,7 +224,8 @@ extension DatabaseManager {
                         return
                     }
                     
-                    self.finishCreatingConversation(conversationID: conversationID,
+                    self.finishCreatingConversation(name: name,
+                                                    conversationID: conversationID,
                                                     firstMessage: firstMessage)
                     { (success) in
                         completion(true)
@@ -241,7 +245,8 @@ extension DatabaseManager {
                         return
                     }
                     
-                    self.finishCreatingConversation(conversationID: conversationID,
+                    self.finishCreatingConversation(name: name,
+                                                    conversationID: conversationID,
                                                     firstMessage: firstMessage) { (success) in
                         completion(true)
                     }
@@ -251,7 +256,8 @@ extension DatabaseManager {
         
     }
     
-    private func finishCreatingConversation(conversationID : String,
+    private func finishCreatingConversation(name : String,
+                                            conversationID : String,
                                             firstMessage : Message,
                                             completion : @escaping (Bool) -> Void)
     {
@@ -293,12 +299,13 @@ extension DatabaseManager {
         let currentUserEmail = DatabaseManager.shared.safeEmail(emailAddress: UDManager.sharedInstance.userEmail)
         
         let collectionMessage : [String : Any] = [
-            "id"        : firstMessage.messageId,
-            "type"      : firstMessage.kind.messageKindString,
-            "content"   : message,
-            "date"      : dateString,
-            "sender_emai" : currentUserEmail,
-            "isRead"    : false
+            FirebaseConstant.message_id         : firstMessage.messageId,
+            FirebaseConstant.message_type       : firstMessage.kind.messageKindString,
+            FirebaseConstant.message_content    : message,
+            FirebaseConstant.message_date       : dateString,
+            FirebaseConstant.message_sender_Email : currentUserEmail,
+            FirebaseConstant.message_is_read    : false,
+            FirebaseConstant.message_name       : name
         ]
         
         let value : [String : Any] = [

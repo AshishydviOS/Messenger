@@ -108,7 +108,10 @@ extension ChatVC : InputBarAccessoryViewDelegate {
                                   sentDate: Date(),
                                   kind: .text(text))
             DatabaseManager.shared.createNewConversation(with: otherUserEmail,
-                                                         firstMessage: message) { [weak self] (success) in
+                                                         firstMessage: message,
+                                                         name: self.title ?? "")
+            { [weak self] (success) in
+                
                 if success {
                     print("Message Sent ")
                 }
