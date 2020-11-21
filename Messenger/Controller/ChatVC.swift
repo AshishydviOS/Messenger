@@ -10,16 +10,41 @@ import MessageKit
 import InputBarAccessoryView
 
 struct Message : MessageType {
-    var sender: SenderType
-    var messageId: String
-    var sentDate: Date
-    var kind: MessageKind
+    public var sender: SenderType
+    public var messageId: String
+    public var sentDate: Date
+    public var kind: MessageKind
+}
+
+extension MessageKind {
+    var messageKindString : String{
+        switch self{
+        case .text(_):
+            return "text"
+        case .attributedText(_):
+            return "attributedText"
+        case .photo(_):
+            return "photo"
+        case .video(_):
+            return "video"
+        case .location(_):
+            return "location"
+        case .emoji(_):
+            return "emoji"
+        case .audio(_):
+            return "audio"
+        case .contact(_):
+            return "contact"
+        case .custom(_):
+            return "custom"
+        }
+    }
 }
 
 struct Sender : SenderType {
-    var photoURL    : String
-    var senderId    : String
-    var displayName : String
+    public var photoURL    : String
+    public var senderId    : String
+    public var displayName : String
 }
 
 class ChatVC: MessagesViewController {
@@ -103,7 +128,7 @@ extension ChatVC : InputBarAccessoryViewDelegate {
         let dateString = ChatVC.dateFormatter.string(from: Date())
         
         //date, otheruseremail, senderemail, randomInt
-        let currentUserEmail = UDManager.sharedInstance.userEmail
+        let currentUserEmail = DatabaseManager.shared.safeEmail(emailAddress: UDManager.sharedInstance.userEmail)
         let newIdentifier = "\(otherUserEmail)_\(currentUserEmail)_\(dateString)"
         print("Create message id : \(newIdentifier)")
         return newIdentifier

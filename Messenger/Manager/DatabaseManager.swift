@@ -47,8 +47,8 @@ extension DatabaseManager {
         LogManager.sharedInstance.logVerbose(#file, methodName: #function, logMessage: "Insert user")
         database = Database.database().reference()
         database.child(user.safeEmail).setValue([
-            "first_name" : user.firstName,
-            "last_name" : user.lastName
+            FirebaseConstant.first_Name : user.firstName,
+            FirebaseConstant.last_Name : user.lastName
         ]) { (error, _) in
             guard error == nil else {
                 print("failed to write to database")
@@ -60,12 +60,12 @@ extension DatabaseManager {
                 if var userCollection = snapshot.value as? [[String:String]] {
                     //append to user dictionary
                     let newElement = [
-                        "name" : user.firstName + " " + user.lastName,
-                        "email" : user.safeEmail
+                        FirebaseConstant.name   : user.firstName + " " + user.lastName,
+                        FirebaseConstant.email  : user.safeEmail
                     ]
                     userCollection.append(newElement)
                     
-                    self.database.child("users").setValue(userCollection) { (error, _) in
+                    self.database.child(FirebaseConstant.users).setValue(userCollection) { (error, _) in
                         guard error == nil else {
                             completion(false)
                             return
@@ -77,11 +77,11 @@ extension DatabaseManager {
                     //Create that array
                     let newCollection : [[String : String]] = [
                         [
-                            "name" : user.firstName + " " + user.lastName,
-                            "email" : user.safeEmail
+                            FirebaseConstant.name   : user.firstName + " " + user.lastName,
+                            FirebaseConstant.email  : user.safeEmail
                         ]
                     ]
-                    self.database.child("users").setValue(newCollection) { (error, _) in
+                    self.database.child(FirebaseConstant.users).setValue(newCollection) { (error, _) in
                         guard error == nil else {
                             completion(false)
                             return
@@ -108,7 +108,7 @@ extension DatabaseManager {
     }
     
     public func getAllUsers(completion : @escaping (Result<[[String:String]], Error>) -> Void) {
-        database.child("users").observeSingleEvent(of: .value) { (snapshot) in
+        database.child(FirebaseConstant.users).observeSingleEvent(of: .value) { (snapshot) in
             guard let value = snapshot.value as? [[String : String]] else {
                 completion(.failure(DatabaseErrors.FailedToFetch))
                 return
@@ -127,11 +127,194 @@ extension DatabaseManager {
 //MARK: Sending messages / conversation
 
 extension DatabaseManager {
+/*
+
+    "123456" => {
+        "messages" : [
+            {
+                "id"        : String
+                "type"      : text, photo, video
+                "content"   : String
+                "date"      : Date()
+                "sender_emai" : String
+                "isRead"    : String
+            }
+        ]
+    }
+     
+    conversation => [
+        [
+            "conversation_id"   : "123456"
+            "other_user_email"  :
+            "latest_message"    : => {
+                date    : Date()
+                latest_message  : message
+                is_read : true/false
+            }
+            "other_user_email"  :
+            "other_user_email"  :
+        ]
+    ]
+*/
     
     /// Creates a new conversation with target user email and first message sent
     public func createNewConversation(with otherUserEmail : String,
                                       firstMessage : Message,
-                                      completion : @escaping (Bool) -> Void) {
+                                      completion : @escaping (Bool) -> Void)
+    {
+        let safeEmail = DatabaseManager.shared.safeEmail(emailAddress: UDManager.sharedInstance.userEmail)
+        let ref = database.child("\(safeEmail)")
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            guard var userNode = snapshot.value as? [String : Any] else {
+                completion(false)
+                print("user Not found")
+                return
+            }
+            
+            let messageDate = firstMessage.sentDate
+            let dateString = ChatVC.dateFormatter.string(from: messageDate)
+            
+            var message = ""
+            
+            switch firstMessage.kind {
+            case .text(let messageText):
+                message = messageText
+            case .attributedText(_):
+                break
+            case .photo(_):
+                break
+            case .video(_):
+                break
+            case .location(_):
+                break
+            case .emoji(_):
+                break
+            case .audio(_):
+                break
+            case .contact(_):
+                break
+            case .custom(_):
+                break
+            }
+            
+            let conversationID = "conversation_\(firstMessage.messageId)"
+            
+            let newCoversationData : [String : Any] = [
+                "id"                : conversationID,
+                "other_user_email"  : otherUserEmail,
+                "latest_message"    : [
+                    "date"      : dateString,
+                    "message"   : message,
+                    "is_read"   : false
+                ]
+            ]
+            
+            if var conversations = userNode[FirebaseConstant.conversations] as? [[String : Any]] {
+                //conversation array exist for current user
+                //you should append
+                conversations.append(newCoversationData)
+                userNode[FirebaseConstant.conversations] = conversations
+                
+                ref.setValue(userNode) { (error, _) in
+                    guard error == nil else {
+                        completion(false)
+                        return
+                    }
+                    
+                    self.finishCreatingConversation(conversationID: conversationID,
+                                                    firstMessage: firstMessage)
+                    { (success) in
+                        completion(true)
+                    }
+                }
+            }
+            else {
+                //conversation array does NOT exist
+                //create new conversation
+                userNode[FirebaseConstant.conversations] = [
+                    newCoversationData
+                ]
+                
+                ref.setValue(userNode) { (error, _) in
+                    guard error == nil else {
+                        completion(false)
+                        return
+                    }
+                    
+                    self.finishCreatingConversation(conversationID: conversationID,
+                                                    firstMessage: firstMessage) { (success) in
+                        completion(true)
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    private func finishCreatingConversation(conversationID : String,
+                                            firstMessage : Message,
+                                            completion : @escaping (Bool) -> Void)
+    {
+//        {
+//            "id"        : String
+//            "type"      : text, photo, video
+//            "content"   : String
+//            "date"      : Date()
+//            "sender_emai" : String
+//            "isRead"    : String
+//        }
+        
+        var message = ""
+        
+        switch firstMessage.kind {
+        case .text(let messageText):
+            message = messageText
+        case .attributedText(_):
+            break
+        case .photo(_):
+            break
+        case .video(_):
+            break
+        case .location(_):
+            break
+        case .emoji(_):
+            break
+        case .audio(_):
+            break
+        case .contact(_):
+            break
+        case .custom(_):
+            break
+        }
+        
+        let messageDate = firstMessage.sentDate
+        let dateString = ChatVC.dateFormatter.string(from: messageDate)
+        
+        let currentUserEmail = DatabaseManager.shared.safeEmail(emailAddress: UDManager.sharedInstance.userEmail)
+        
+        let collectionMessage : [String : Any] = [
+            "id"        : firstMessage.messageId,
+            "type"      : firstMessage.kind.messageKindString,
+            "content"   : message,
+            "date"      : dateString,
+            "sender_emai" : currentUserEmail,
+            "isRead"    : false
+        ]
+        
+        let value : [String : Any] = [
+            "messages" : [
+                collectionMessage
+            ]
+        ]
+        
+        database.child("\(conversationID)").setValue(value) { (error, _) in
+            guard error == nil else {
+                completion(false)
+                return
+            }
+            
+            completion(true)
+        }
         
     }
     

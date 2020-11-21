@@ -17,6 +17,7 @@
 		246FB78A255FBF1D00F2E0E7 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246FB789255FBF1D00F2E0E7 /* LogManager.swift */; };
 		246FB78E255FC07E00F2E0E7 /* UDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246FB78D255FC07E00F2E0E7 /* UDManager.swift */; };
 		246FB791255FE44500F2E0E7 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246FB790255FE44500F2E0E7 /* DatabaseManager.swift */; };
+		2477454C2568F91600813A8B /* FirebaseConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2477454B2568F91600813A8B /* FirebaseConstant.swift */; };
 		2487CD46255D9C810032BF7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2487CD45255D9C810032BF7F /* AppDelegate.swift */; };
 		2487CD4A255D9C810032BF7F /* ConversationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2487CD49255D9C810032BF7F /* ConversationsVC.swift */; };
 		2487CD4D255D9C810032BF7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2487CD4B255D9C810032BF7F /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		246FB789255FBF1D00F2E0E7 /* LogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		246FB78D255FC07E00F2E0E7 /* UDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDManager.swift; sourceTree = "<group>"; };
 		246FB790255FE44500F2E0E7 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		2477454B2568F91600813A8B /* FirebaseConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseConstant.swift; sourceTree = "<group>"; };
 		2487CD42255D9C810032BF7F /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2487CD45255D9C810032BF7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2487CD49255D9C810032BF7F /* ConversationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsVC.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				246FB78D255FC07E00F2E0E7 /* UDManager.swift */,
 				245BC81A2561BD0D00A64B57 /* ProgressHandler.swift */,
 				246824E2256259FD0099D7B5 /* StorageManager.swift */,
+				2477454B2568F91600813A8B /* FirebaseConstant.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2477454C2568F91600813A8B /* FirebaseConstant.swift in Sources */,
 				246824E3256259FD0099D7B5 /* StorageManager.swift in Sources */,
 				245BC85C2561C08200A64B57 /* ChatVC.swift in Sources */,
 				2487CD4A255D9C810032BF7F /* ConversationsVC.swift in Sources */,
